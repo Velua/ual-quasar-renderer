@@ -64,15 +64,16 @@ class Custom {
                     color: "positive",
                     icon: "done",
                     actions: [
-                      {
-                        label: "Explorer",
-                        color: 'white',
-                        handler: () => {
-                          this.openURL(`https://eosflare.io/tx/${result.transactionId}`)
+                        {
+                            label: "Explorer",
+                            color: 'white',
+                            handler: () => {
+                                this.openURL(`https://eosflare.io/tx/${result.transactionId}`)
+                            }
                         }
-                      }
                     ]
-                  })
+                })
+                Loading.hide()
             }
         } catch (e) {
             console.log(e.message)
@@ -93,8 +94,9 @@ class Custom {
                     ]
                   })
             }
+            Loading.hide()
+            throw new Error(e)
         }
-        Loading.hide()
 
 
     }
