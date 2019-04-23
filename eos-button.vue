@@ -39,25 +39,25 @@ export default {
   },
   computed: {
     ButtonLabel: function() {
-      return this.$eos.data.authed
-        ? `Logout ${this.$eos.data.accountName}`
+      return this.$eosio.data.authed
+        ? `Logout ${this.$eosio.data.accountName}`
         : "Login";
     }
   },
 
   methods: {
     getAuthenticators: async function() {
-      this.styles = await this.$eos.getAuthenticators();
+      this.styles = await this.$eosio.getAuthenticators();
     },
     selectAuth: async function(index) {
-      await this.$eos.selectAuthenticator(index);
+      await this.$eosio.selectAuthenticator(index);
       this.prompt = false;
     },
     logout: function() {
-      this.$eos.logout();
+      this.$eosio.logout();
     },
     loginToggle: async function() {
-      if (!this.$eos.data.authed) {
+      if (!this.$eosio.data.authed) {
         this.prompt = true;
         this.getAuthenticators();
       } else {
